@@ -20,32 +20,32 @@ const data = [
 const bg = document.querySelector('.bg-layer img');
 const leftBtn = document.querySelector('#left-btn');
 const rightBtn = document.querySelector('#right-btn');
-const slideIndex = document.querySelector('.slide-index');
+const slideIndicator = document.querySelector('.slide-indicator');
 
 let move = 0;
-let moveValue = 1100;
+let moveAmount = 1100;
 
 leftBtn.addEventListener('click', function() {
   console.log('left');
-  move += moveValue;
+  move += moveAmount;
   bg.style.transform = `translate(${move}px)`;
 });
 
 rightBtn.addEventListener('click', function() {
   console.log('right');
-  move -= moveValue;
+  move -= moveAmount;
   bg.style.transform = `translate(${move}px)`;
 });
 
 data.forEach((item, index) => {
-  slideIndex.insertAdjacentHTML('beforeend', `<span>${index}</span>`);
+  slideIndicator.insertAdjacentHTML('beforeend', `<span class="indicator">${index}</span>`);
 });
 
-const span = document.querySelectorAll('.slide-index span');
+const indicators = document.querySelectorAll('.slide-indicator span');
 
-span.forEach((item, index) => {
+indicators.forEach((item, index) => {
   item.addEventListener('click', function(){
-    move = moveValue * index * -1;
+    move = moveAmount * index * -1;
     bg.style.transform = `translate(${move}px)`;
   })
 });
