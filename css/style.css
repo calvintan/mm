@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.bg-layer {
+  height: 100vh;
+}
+
+.bg-layer img {
+  height: inherit;
+  transition-duration: 500ms;
+}
+
+.text-layer {
+  position: absolute;
+  z-index: 1;
+  width: inherit;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+#left-btn, #right-btn {
+  cursor: pointer;
+}
