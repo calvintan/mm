@@ -28,6 +28,25 @@ body {
 .text-layer {
   position: absolute;
   z-index: 1;
+}
+
+.text-layer div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+.text-layer div:not(.active) {
+  opacity: 0;
+}
+
+.btn-layer {
+  position: absolute;
+  z-index: 10;
   width: inherit;
   height: 100vh;
   display: flex;
@@ -36,6 +55,9 @@ body {
   padding: 20px;
 }
 
+/*
 #left-btn, #right-btn {
   cursor: pointer;
-}
+}*/
+
+

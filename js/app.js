@@ -42,31 +42,44 @@ const data = [
 ]
 
 const bg = document.querySelector('.bg-layer img');
-const leftBtn = document.querySelector('#left-btn');
-const rightBtn = document.querySelector('#right-btn');
+const prevBtn = document.querySelector('#prev-btn');
+const nextBtn = document.querySelector('#next-btn');
 const slideIndicator = document.querySelector('.slide-indicator');
+const textLayer = document.querySelector('.text-layer');
+const texts = document.querySelectorAll('.text-layer div');
 
 let current = 0;
 let move = 0;
 let moveAmount = 1100;
+let currentText = texts[current];
 
-leftBtn.addEventListener('click', function() {
+prevBtn.addEventListener('click', function() {
+  currentText = texts[current];
   current--;
   if (current < 0) {
     current = 0;
   } else {
     move += moveAmount;
     bg.style.transform = `translate(${move}px)`;
+    currentText.classList.remove('active');
+    bg.addEventListener('transitionend', () => {
+      texts[current].classList.add('active');
+    });
   }
 });
 
-rightBtn.addEventListener('click', function() {
+nextBtn.addEventListener('click', function() {
+  currentText = texts[current];
   current++;
   if (current >= data.length) {
     current = data.length - 1;
   } else {
     move -= moveAmount;
     bg.style.transform = `translate(${move}px)`;
+    currentText.classList.remove('active');
+    bg.addEventListener('transitionend', () => {
+      texts[current].classList.add('active');
+    });
   }
 });
 
@@ -78,8 +91,14 @@ const indicators = document.querySelectorAll('.slide-indicator span');
 
 indicators.forEach((item, index) => {
   item.addEventListener('click', function(){
+    currentText = texts[current];
     current = index;
     move = moveAmount * index * -1;
     bg.style.transform = `translate(${move}px)`;
+    currentText.classList.remove('active');
+    bg.addEventListener('transitionend', () => {
+      texts[current].classList.add('active');
+    });
   })
 });
+
