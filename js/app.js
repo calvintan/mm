@@ -29,6 +29,7 @@ indicators.forEach(function(item, index) {
     currentIndicator.classList.remove('active');
     texts[current].classList.add('active');
     indicators[current].classList.add('active');
+    hideButton();
   });
 });
 
@@ -44,10 +45,11 @@ prevBtn.addEventListener('click', function() {
     currentText.classList.remove('active');
     currentIndicator.classList.remove('active');
     indicators[current].classList.add('active');
-    bg.addEventListener('transitionend', () => {
+    bg.addEventListener('transitionend', function() {
       texts[current].classList.add('active');
     });
   }
+  hideButton();
 });
 
 nextBtn.addEventListener('click', function() {
@@ -62,8 +64,24 @@ nextBtn.addEventListener('click', function() {
     currentText.classList.remove('active');
     currentIndicator.classList.remove('active');
     indicators[current].classList.add('active');
-    bg.addEventListener('transitionend', () => {
+    bg.addEventListener('transitionend', function() {
       texts[current].classList.add('active');
     });
   }
+  hideButton();
 });
+
+function hideButton() {
+  if (current === 0) {
+    prevBtn.classList.add('hide-button');
+  } else {
+    prevBtn.classList.remove('hide-button');
+  }
+
+  if (current === texts.length - 1) {
+    nextBtn.classList.add('hide-button');
+  } else {
+    nextBtn.classList.remove('hide-button');
+  }
+}
+

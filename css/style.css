@@ -153,6 +153,7 @@ a {
 
 .texts div:not(.active) {
   opacity: 0;
+  visibility: hidden;
 }
 
 /* Social icons */
@@ -212,6 +213,11 @@ a {
   color: #fff;
   font-size: 48px;
   cursor: pointer;
+}
+
+.buttons .hide-button {
+  opacity: 0;
+  visibility: hidden;
 }
 
 #prev-btn {
