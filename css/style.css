@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'Klavika';
+  src: url('../font/klavika-bold-webfont.woff') format('woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Klavika';
+  src: url('../font/klavika-light-webfont.woff') format('woff');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Klavika';
+  src: url('../font/klavika-medium-webfont.woff') format('woff');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Klavika';
+  src: url('../font/klavika-regular-webfont.woff') format('woff');
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,7 +31,7 @@ body {
   padding: 0;
   background: #000;
   color: #fff;
-  font-family: sans-serif;
+  font-family: 'Klavika', sans-serif;
 }
 
 .container {
@@ -29,17 +53,34 @@ body {
 /* Text */
 .texts {
   position: relative;
-  z-index: 1;
 }
 
 .texts div {
   position: absolute;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
   opacity: 1;
   transition: opacity 500ms ease-out;
+  margin: 20px;
+}
+
+.texts h2 {
+  display: inline-block;
+  margin: 0;
+  max-width: 400px;
+  font-weight: 400;
+  font-size: 48px;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,.5);
+}
+
+.texts p {
+  font-weight: 300;
+  font-size: 12px;
 }
 
 .texts div:not(.active) {
@@ -47,22 +88,24 @@ body {
 }
 
 /* Buttons */
-#prev-btn {
+.buttons button {
+  margin: 20px;
   position: absolute;
   z-index: 10;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#next-btn {
-  position: absolute;
-  z-index: 10;
-  right: 0;
   top: 50%;
   transform: translateY(-50%);
   opacity: 1;
   transition: opacity 500ms ease-out;
+  background: transparent;
+  border: none;
+}
+
+#prev-btn {
+  left: 0;
+}
+
+#next-btn {
+  right: 0;
 }
 
 /* Indicators */
@@ -71,4 +114,21 @@ body {
   z-index: 10;
   left: 0;
   bottom: 0;
+  margin: 20px;
+  border: 2px dotted #fff;
+}
+
+.indicator {
+  display: inline-block;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.indicator + .indicator {
+  border-left: 2px dotted #fff;
+}
+
+.indicator.active {
+  background: #fff;
 }
