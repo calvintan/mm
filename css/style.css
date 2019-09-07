@@ -34,6 +34,10 @@ body {
   font-family: 'Klavika', sans-serif;
 }
 
+a {
+  color: #fff;
+}
+
 .container {
   position: relative;
   width: 100vw;
@@ -53,6 +57,7 @@ body {
 /* Text */
 .texts {
   position: relative;
+  width: 100%;
 }
 
 .texts div {
@@ -60,11 +65,14 @@ body {
   z-index: 1;
   left: 0;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   opacity: 1;
   transition: opacity 500ms ease-out;
-  margin: 20px;
+  padding: 20px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .texts h2 {
@@ -76,15 +84,25 @@ body {
   text-transform: uppercase;
   text-decoration: underline;
   text-decoration-color: rgba(255,255,255,.5);
+  align-self: center;
 }
 
 .texts p {
   font-weight: 300;
   font-size: 12px;
+  margin-bottom: 0;
 }
 
 .texts div:not(.active) {
   opacity: 0;
+}
+
+.social {
+  padding: 0;
+}
+
+.social li {
+  display: inline-block;
 }
 
 /* Buttons */
@@ -127,6 +145,14 @@ body {
 
 .indicator + .indicator {
   border-left: 2px dotted #fff;
+}
+
+.indicator:first-of-type {
+  color: transparent;
+}
+
+.indicator:last-of-type {
+  color: transparent;
 }
 
 .indicator.active {
