@@ -1,8 +1,12 @@
 const bg = document.querySelector('.bg img');
+const loader = document.querySelector('.loader');
+const loaderBox = document.querySelector('.loader-box');
+const loadFirst = document.querySelector('.loader-box .load-first');
 const prevBtn = document.querySelector('#prev-btn');
 const nextBtn = document.querySelector('#next-btn');
 const slideIndicator = document.querySelector('.slide-indicator');
 const texts = document.querySelectorAll('.texts div');
+const lastText = document.querySelector('.texts div:last-child');
 
 let current = 0;
 let move = 0;
@@ -29,6 +33,7 @@ indicators.forEach(function(item, index) {
     currentIndicator.classList.remove('active');
     texts[current].classList.add('active');
     indicators[current].classList.add('active');
+    animate();
     hideButton();
   });
 });
@@ -49,6 +54,7 @@ prevBtn.addEventListener('click', function() {
       texts[current].classList.add('active');
     });
   }
+  animate();
   hideButton();
 });
 
@@ -68,8 +74,17 @@ nextBtn.addEventListener('click', function() {
       texts[current].classList.add('active');
     });
   }
+  animate();
   hideButton();
 });
+
+function animate() {
+  if (current === texts.length - 1) {
+    lastText.classList.add('animate');
+  } else {
+    lastText.classList.remove('animate');
+  }
+}
 
 function hideButton() {
   if (current === 0) {
@@ -85,3 +100,27 @@ function hideButton() {
   }
 }
 
+function fade(element) {
+  let op = 1;
+  let timer = setInterval(function() {
+    if (op <= 0.1){
+      clearInterval(timer);
+      element.style.display = 'none';
+    }
+    element.style.opacity = op;
+    element.style.filter = "alpha(opacity=" + op * 100 + ")";
+    op -= op * 0.1;
+  }, 50);
+}
+
+window.onload = function() {
+  setTimeout(function(){
+    fade(loader)
+  }, 3000 );
+  const loadSecond = '<p class="load-second">young padawan...</p>';
+  loaderBox.classList.add('grow');
+  loadFirst.addEventListener('transitionend', function() {
+    loadFirst.textContent = "Patience, ";
+    loaderBox.insertAdjacentHTML('beforeend', loadSecond);
+  });
+}
