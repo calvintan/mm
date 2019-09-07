@@ -46,7 +46,18 @@ a {
 
 /* Background */
 .bg {
+  position: relative;
   height: 100vh;
+}
+
+.bg .svg-logo-mm {
+  position: absolute;
+  z-index: 10;
+  right: 20px;
+  bottom: 0;
+  fill: #fff;
+  transform: scale(2);
+  transform-origin: bottom right;
 }
 
 .bg img {
