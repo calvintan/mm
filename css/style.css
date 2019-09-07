@@ -16,21 +16,23 @@ body {
   overflow: hidden;
 }
 
-.bg-layer {
+/* Background */
+.bg {
   height: 100vh;
 }
 
-.bg-layer img {
+.bg img {
   height: inherit;
   transition-duration: 500ms;
 }
 
-.text-layer {
-  position: absolute;
+/* Text */
+.texts {
+  position: relative;
   z-index: 1;
 }
 
-.text-layer div {
+.texts div {
   position: absolute;
   left: 0;
   top: 0;
@@ -40,25 +42,33 @@ body {
   transition: opacity 500ms ease-out;
 }
 
-.text-layer div:not(.active) {
+.texts div:not(.active) {
   opacity: 0;
 }
 
-.btn-layer {
+/* Buttons */
+#prev-btn {
   position: absolute;
   z-index: 10;
-  width: inherit;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 
-/*
-#left-btn, #right-btn {
-  cursor: pointer;
-}*/
+#next-btn {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
 
-
+/* Indicators */
+.slide-indicator {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+}
